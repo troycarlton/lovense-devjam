@@ -189,6 +189,24 @@ function newGame() {
   newShape();
   GameOver = false;
   isIntense = $('#tetris-intense-mode').prop('checked');
+  maximumIntensity = $('#maximum-intensity').val();
+  intensityModifier = $('#intensity-modifier').val();
+  if(maximumIntensity < 1)
+  {
+    maximumIntensity = 1;
+  }
+  else if(maximumIntensity > 20)
+  {
+    maximumIntensity = 20;
+  }
+  if(intensityModifier < 0)
+  {
+    intensityModifier = 0;
+  }
+  else if(intensityModifier > 100)
+  {
+    intensityModifier = 100;
+  }
   interval = setInterval( tick, 400 );
 
   totalRowsDismissed = 0;
