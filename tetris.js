@@ -25,6 +25,8 @@ var GameOver = false;
 var isFrozen = false;
 var isIntense = false;
 var totalRowsDismissed = 0;
+var intensityModifier = 100; // Reduce the intensity of the vibrations, if desired. 100 = no reduction, 0 = no vibrations
+var maximumIntensity = 20; //using the Lovense API's standard scale of 1-20;
 
 
 
@@ -387,7 +389,7 @@ function isValid( offsetX, offsetY, newCurrent ) {
               for (let i = 0; i < enabledToys.length; i++) {
                 const toy = enabledToys[i];
 
-                lovense.sendVibration(toy, 20, 5);
+                lovense.sendVibration(toy, maximumIntensity, 5);
               }
           }
           return false;
@@ -443,7 +445,8 @@ function checkClearLines() {
       // Vibration Level is based upon the Current Level of the Game
       // The Number of rows they just dismissed and 1.5 to make it abit more fun ;)
       var vibrationLevel = level * totalRows * 1.5;
-      if (vibrationLevel > 20) { vibrationLevel = 20; }
+      if (vibrationLevel > maximumIntensity) { vibrationLevel = maximumIntensity; }
+      vibrationLevel = vibrationLevel / 100 * intensityModifier;
 
       lovense.sendVibration(
         toy, Math.abs(vibrationLevel),
@@ -460,8 +463,8 @@ function checkClearLines() {
 
           // Vibration Level is based upon the Current Level of the Game
           var lvlVibrate = level;
-          if (lvlVibrate > 20) {
-            lvlVibrate = 20;
+          if (lvlVibrate > maximumIntensity) {
+            lvlVibrate = maximumIntensity;
           }
 
           lovense.sendVibration(

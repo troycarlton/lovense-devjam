@@ -81,6 +81,14 @@
             <input class="form-check-input" type="checkbox" id="tetris-intense-mode">
             <label class="form-check-label" for="tetris-intense-mode">Enable INTENSE Mode (Will constantly Vibrate based upon the Current Level, so it get's harder the further you advance ;) )</label>
           </div>
+          <div class="form-text">
+            <input class="form-text-input" type="text" id="maximum-intensity" value="20">
+            <label class="form-text-label" for="maximum-intensity">Maximum Overall Intensity on a scale from 1 to 20</label>
+          </div>
+          <div class="form-text">
+            <input class="form-text-input" type="text" id="intensity-modifier" value="100">
+            <label class="form-text-label" for="intensity-modifier">If desired, reduce the intensity of every vibration. 100 = no intensity change, 0 = no vibrations.</label>
+          </div>
 
           <div class="canvas-container">
             <canvas scrolling="no" width="300" height="600" id="canvas-tetris" style="border: 1px solid black;"></canvas>
