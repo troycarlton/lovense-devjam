@@ -191,6 +191,14 @@ function newGame() {
   isIntense = $('#tetris-intense-mode').prop('checked');
   maximumIntensity = $('#maximum-intensity').val();
   intensityModifier = $('#intensity-modifier').val();
+  if(maximumIntensity.length === 0)
+  {
+    maximumIntensity = 20;
+  }
+  if(intensityModifier.length === 0)
+  {
+    intensityModifier = 100;
+  }
   if(maximumIntensity < 1)
   {
     maximumIntensity = 1;
